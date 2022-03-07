@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/foot_grass_4.wav-b55fe05eea70c874f4abbd85dacf7781.sample"
+
+[deps]
+
+source_file="res://assets/sfx/foot_grass_4.wav"
+dest_files=[ "res://.import/foot_grass_4.wav-b55fe05eea70c874f4abbd85dacf7781.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

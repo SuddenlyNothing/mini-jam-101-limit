@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/characters/enemies/EnemyStates.gd" type="Script" id=1]
+[ext_resource path="res://scenes/characters/enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/goop_slam_2.wav" type="AudioStream" id=3]
+[ext_resource path="res://utils/RandomAudioPlayer2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sfx/goop_slam_3.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/goop_slam_1.wav" type="AudioStream" id=6]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 hit_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float hit_strength : hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+	vec4 custom_color = texture(TEXTURE, UV);
+	custom_color.rgb = mix(custom_color.rgb, hit_color.rgb, hit_strength);
+	COLOR = custom_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=63]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/hit_color = Color( 1, 0, 0, 1 )
+shader_param/hit_strength = 0.0
+
+[sub_resource type="SpriteFrames" id=62]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=29]
+resource_local_to_scene = true
+radius = 250.0
+
+[sub_resource type="RectangleShape2D" id=30]
+resource_local_to_scene = true
+
+[node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="EnemyStates" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 63 )
+frames = SubResource( 62 )
+animation = "attack"
+
+[node name="ActivateArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
+shape = SubResource( 29 )
+
+[node name="ActivateCast" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 30 )
+
+[node name="HitFlashTween" type="Tween" parent="."]
+
+[node name="GoopHurt" parent="." instance=ExtResource( 4 )]
+audio_streams = [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ) ]
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="ActivateArea" to="." method="_on_ActivateArea_body_entered"]
+[connection signal="body_exited" from="ActivateArea" to="." method="_on_ActivateArea_body_exited"]

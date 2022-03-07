@@ -1,0 +1,203 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://scenes/characters/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/shooter_sheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/characters/enemies/ShooterEnemy.gd" type="Script" id=3]
+[ext_resource path="res://scenes/characters/enemies/ShooterStates.gd" type="Script" id=4]
+[ext_resource path="res://assets/sfx/goop_shoot.wav" type="AudioStream" id=5]
+[ext_resource path="res://utils/RandomAudioPlayer2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/goop_step_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/goop_step_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/goop_step_3.wav" type="AudioStream" id=9]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 hit_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float hit_strength : hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+	vec4 custom_color = texture(TEXTURE, UV);
+	custom_color.rgb = mix(custom_color.rgb, hit_color.rgb, hit_strength);
+	COLOR = custom_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=30]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/hit_color = Color( 1, 0, 0, 1 )
+shader_param/hit_strength = 0.0
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 100, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 125, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 150, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 175, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 100, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 125, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 100, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 125, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 150, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 175, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 200, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 225, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 250, 48, 25, 24 )
+
+[sub_resource type="SpriteFrames" id=29]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=27]
+resource_local_to_scene = true
+radius = 250.0
+
+[sub_resource type="RectangleShape2D" id=31]
+resource_local_to_scene = true
+extents = Vector2( 5, 5 )
+
+[sub_resource type="AudioStreamRandomPitch" id=32]
+audio_stream = ExtResource( 5 )
+
+[node name="ShooterEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+attack_frame = 4
+death_particles_rect_extents = Vector2( 5, 5 )
+
+[node name="EnemyStates" parent="." index="0"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+material = SubResource( 30 )
+frames = SubResource( 29 )
+animation = "idle"
+offset = Vector2( 0, -5 )
+
+[node name="CollisionShape2D" parent="ActivateArea" index="0"]
+shape = SubResource( 27 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource( 31 )
+
+[node name="LeftGroundCast" type="RayCast2D" parent="." index="5"]
+position = Vector2( -7, 3 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="RightGroundCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 7, 3 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="ChangeStateTimer" type="Timer" parent="." index="7"]
+one_shot = true
+
+[node name="ShotPosition" type="Position2D" parent="." index="8"]
+position = Vector2( 0, -6 )
+
+[node name="AttackSFX" parent="." index="11"]
+stream = SubResource( 32 )
+
+[node name="StepSFX" parent="." index="12" instance=ExtResource( 6 )]
+audio_streams = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+
+[connection signal="timeout" from="ChangeStateTimer" to="." method="_on_ChangeStateTimer_timeout"]

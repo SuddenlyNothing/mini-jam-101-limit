@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ui/hud/energy_progress.png" type="Texture" id=1]
+[ext_resource path="res://ui/gameplay/Energy.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/hud/energy_over.png" type="Texture" id=3]
+
+[node name="Energy" type="TextureProgress"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -248.0
+margin_right = 248.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="AutoIncrement" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="AutoIncrement" to="." method="_on_AutoIncrement_timeout"]

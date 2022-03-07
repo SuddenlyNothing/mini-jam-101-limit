@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_dash.ogg-f367178b820e6eec956a8db703b323d8.oggstr"
+
+[deps]
+
+source_file="res://assets/mus/mus_dash.ogg"
+dest_files=[ "res://.import/mus_dash.ogg-f367178b820e6eec956a8db703b323d8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

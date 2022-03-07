@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/foliage_grow_1.wav-f57cc6f735b8e974c4950b6652cd120f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/foliage_grow_1.wav"
+dest_files=[ "res://.import/foliage_grow_1.wav-f57cc6f735b8e974c4950b6652cd120f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

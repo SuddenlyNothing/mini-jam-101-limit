@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/projectile_loop.wav-da85cdae99fc20ce1a46dc7b24fb07f2.sample"
+
+[deps]
+
+source_file="res://assets/sfx/projectile_loop.wav"
+dest_files=[ "res://.import/projectile_loop.wav-da85cdae99fc20ce1a46dc7b24fb07f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

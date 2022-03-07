@@ -1,0 +1,214 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://scenes/characters/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/blocker_sheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/characters/enemies/BlockerEnemy.gd" type="Script" id=3]
+[ext_resource path="res://scenes/characters/enemies/BlockerStates.gd" type="Script" id=4]
+[ext_resource path="res://scenes/characters/enemies/BiterEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/characters/enemies/ShooterEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/goop_spawn.wav" type="AudioStream" id=7]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 hit_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float hit_strength : hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+	vec4 custom_color = texture(TEXTURE, UV);
+	custom_color.rgb = mix(custom_color.rgb, hit_color.rgb, hit_strength);
+	COLOR = custom_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=70]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/hit_color = Color( 1, 0, 0, 1 )
+shader_param/hit_strength = 0.0
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 2 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 2 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 2 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 2 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 2 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 512, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 2 )
+region = Rect2( 576, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 2 )
+region = Rect2( 640, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 2 )
+region = Rect2( 704, 128, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=32]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=30]
+resource_local_to_scene = true
+radius = 250.0
+
+[sub_resource type="RectangleShape2D" id=31]
+resource_local_to_scene = true
+extents = Vector2( 24, 24 )
+
+[sub_resource type="AudioStreamRandomPitch" id=71]
+audio_stream = ExtResource( 7 )
+
+[node name="BlockerEnemy" instance=ExtResource( 1 )]
+collision_layer = 12
+collision_mask = 3
+script = ExtResource( 3 )
+attack_frame = 4
+health = 4
+death_particles_rect_extents = Vector2( 24, 24 )
+enemies = [ ExtResource( 5 ), ExtResource( 6 ) ]
+
+[node name="EnemyStates" parent="." index="0"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+material = SubResource( 70 )
+frames = SubResource( 32 )
+animation = "idle"
+
+[node name="CollisionShape2D" parent="ActivateArea" index="0"]
+shape = SubResource( 30 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource( 31 )
+
+[node name="AttackTimer" type="Timer" parent="." index="5"]
+
+[node name="SpawnPosition" type="Position2D" parent="." index="6"]
+position = Vector2( 0, -6 )
+
+[node name="AttackSFX" parent="." index="9"]
+stream = SubResource( 71 )
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

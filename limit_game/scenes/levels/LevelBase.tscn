@@ -28,5 +28,6 @@ position = Vector2( 306, 186 )
 [node name="DeathWaitTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="tree_exiting" from="." to="." method="_on_LevelBase_tree_exiting"]
 [connection signal="died" from="Player" to="DeathWaitTimer" method="start" flags=6]
 [connection signal="timeout" from="DeathWaitTimer" to="." method="_on_DeathWaitTimer_timeout"]

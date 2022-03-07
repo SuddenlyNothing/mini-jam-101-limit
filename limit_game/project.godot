@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Limit Game"
-run/main_scene="res://scenes/levels/LevelBase.tscn"
+run/main_scene="res://ui/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

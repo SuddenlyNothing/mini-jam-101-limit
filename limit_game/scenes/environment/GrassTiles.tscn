@@ -454,5 +454,4 @@ points = PoolVector2Array( 48, 38, 38, 38, 38, 48, 10, 48, 10, 38, 0, 38, 0, 0, 
 [node name="GrassTiles" type="TileMap"]
 tile_set = SubResource( 49 )
 cell_size = Vector2( 48, 48 )
-show_collision = true
 format = 1

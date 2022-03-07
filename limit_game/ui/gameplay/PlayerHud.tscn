@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/gameplay/Energy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/gameplay/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/gameplay/PlayerHud.gd" type="Script" id=3]
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_top = 4
+
+[node name="V" type="VBoxContainer" parent="M"]
+margin_top = 4.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/separation = -4
+
+[node name="Health" parent="M/V" instance=ExtResource( 2 )]
+margin_left = 264.0
+margin_right = 760.0
+
+[node name="Energy" parent="M/V" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 264.0
+margin_top = 28.0
+margin_right = 760.0
+margin_bottom = 60.0

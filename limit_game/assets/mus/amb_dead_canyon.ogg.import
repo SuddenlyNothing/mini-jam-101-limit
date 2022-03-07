@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/amb_dead_canyon.ogg-89dcbbc87aecf47e77947f36ba9c4d15.oggstr"
+
+[deps]
+
+source_file="res://assets/mus/amb_dead_canyon.ogg"
+dest_files=[ "res://.import/amb_dead_canyon.ogg-89dcbbc87aecf47e77947f36ba9c4d15.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

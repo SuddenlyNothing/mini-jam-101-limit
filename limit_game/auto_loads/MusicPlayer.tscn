@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/mus/amb_dead_canyon.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/mus/amb_wildlife.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/mus/mus_base.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/mus/mus_combat.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/mus/mus_dash.ogg" type="AudioStream" id=5]
+
+[node name="MusicPlayer" type="Node"]
+
+[node name="amb_dead_canyon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Music"
+
+[node name="amb_wildlife" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+bus = "Music"
+
+[node name="mus_base" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Music"
+
+[node name="mus_combat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "Music"
+
+[node name="muc_dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "Music"

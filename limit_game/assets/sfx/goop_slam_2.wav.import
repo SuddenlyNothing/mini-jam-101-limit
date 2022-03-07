@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goop_slam_2.wav-846b970ae335023fba356b2f717e3d81.sample"
+
+[deps]
+
+source_file="res://assets/sfx/goop_slam_2.wav"
+dest_files=[ "res://.import/goop_slam_2.wav-846b970ae335023fba356b2f717e3d81.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

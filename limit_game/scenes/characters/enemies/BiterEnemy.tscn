@@ -1,0 +1,159 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://scenes/characters/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/biter_sheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/characters/enemies/BiterStates.gd" type="Script" id=3]
+[ext_resource path="res://scenes/characters/enemies/BiterEnemy.gd" type="Script" id=4]
+[ext_resource path="res://assets/sfx/goop_bite.wav" type="AudioStream" id=5]
+[ext_resource path="res://utils/RandomAudioPlayer2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/goop_step_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/goop_step_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/goop_step_3.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/goop_land.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/goop_jump.wav" type="AudioStream" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 hit_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float hit_strength : hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+	vec4 custom_color = texture(TEXTURE, UV);
+	custom_color.rgb = mix(custom_color.rgb, hit_color.rgb, hit_strength);
+	COLOR = custom_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/hit_color = Color( 1, 0, 0, 1 )
+shader_param/hit_strength = 0.0
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 100, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 125, 24, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 48, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 100, 48, 25, 24 )
+
+[sub_resource type="SpriteFrames" id=38]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=20]
+resource_local_to_scene = true
+radius = 250.0
+
+[sub_resource type="CapsuleShape2D" id=36]
+radius = 5.0
+height = 4.0
+
+[sub_resource type="AudioStreamRandomPitch" id=39]
+audio_stream = ExtResource( 5 )
+
+[sub_resource type="AudioStreamRandomPitch" id=41]
+audio_stream = ExtResource( 11 )
+
+[sub_resource type="AudioStreamRandomPitch" id=40]
+audio_stream = ExtResource( 10 )
+
+[node name="BiterEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+death_particles_rect_extents = Vector2( 4, 7 )
+
+[node name="EnemyStates" parent="." index="0"]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+material = SubResource( 37 )
+frames = SubResource( 38 )
+animation = "idle"
+
+[node name="CollisionShape2D" parent="ActivateArea" index="0"]
+shape = SubResource( 20 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource( 36 )
+
+[node name="AttackSFX" parent="." index="7"]
+stream = SubResource( 39 )
+
+[node name="StepSFX" parent="." index="8" instance=ExtResource( 6 )]
+audio_streams = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource( 41 )
+bus = "SFX"
+
+[node name="LandSFX" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = SubResource( 40 )
+bus = "SFX"

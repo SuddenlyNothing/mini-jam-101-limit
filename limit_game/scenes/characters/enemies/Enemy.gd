@@ -9,6 +9,7 @@ export var agro_on_start := false
 export(int, 10) var attack_frame := 1
 export(int) var health := 1
 export(Vector2) var death_particles_rect_extents := Vector2.ONE
+export(NodePath) var player_path
 
 var is_player_in_activate_area := false
 var player : Player
@@ -24,6 +25,8 @@ onready var attack_sfx := $AttackSFX
 func _ready() -> void:
 	if agro_on_start:
 		enemy_states.call_deferred("set_state", "walk")
+	if player_path:
+		player = get_node(player_path)
 
 
 # Override to implement the attack

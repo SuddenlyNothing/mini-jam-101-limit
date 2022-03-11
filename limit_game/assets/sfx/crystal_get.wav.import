@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crystal_get.wav-e6a875ffc2ad2a32eb7e243cf1d84598.sample"
+
+[deps]
+
+source_file="res://assets/sfx/crystal_get.wav"
+dest_files=[ "res://.import/crystal_get.wav-e6a875ffc2ad2a32eb7e243cf1d84598.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

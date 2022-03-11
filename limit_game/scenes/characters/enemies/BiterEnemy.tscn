@@ -30,22 +30,6 @@ shader = SubResource( 1 )
 shader_param/hit_color = Color( 1, 0, 0, 1 )
 shader_param/hit_strength = 0.0
 
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 25, 24 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 2 )
-region = Rect2( 25, 0, 25, 24 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 2 )
-region = Rect2( 50, 0, 25, 24 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 2 )
-region = Rect2( 75, 0, 25, 24 )
-
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 24, 25, 24 )
@@ -90,14 +74,25 @@ region = Rect2( 75, 48, 25, 24 )
 atlas = ExtResource( 2 )
 region = Rect2( 100, 48, 25, 24 )
 
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 50, 0, 25, 24 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 0, 25, 24 )
+
 [sub_resource type="SpriteFrames" id=38]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
-"loop": true,
-"name": "idle",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "walk",
@@ -106,6 +101,11 @@ animations = [ {
 "frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": false,
 "name": "attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "idle",
 "speed": 10.0
 } ]
 
@@ -139,6 +139,7 @@ frames = SubResource( 38 )
 animation = "idle"
 
 [node name="CollisionShape2D" parent="ActivateArea" index="0"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
 shape = SubResource( 20 )
 
 [node name="CollisionShape2D" parent="." index="4"]

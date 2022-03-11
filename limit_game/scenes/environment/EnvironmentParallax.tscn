@@ -82,6 +82,7 @@ motion_mirroring = Vector2( 1440, 700 )
 material = SubResource( 4 )
 margin_right = 1440.0
 margin_bottom = 700.0
+mouse_filter = 2
 
 [node name="Layer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.16, 0.16 )
@@ -115,3 +116,4 @@ motion_mirroring = Vector2( 1440, 700 )
 material = ExtResource( 6 )
 margin_right = 1440.0
 margin_bottom = 700.0
+mouse_filter = 2

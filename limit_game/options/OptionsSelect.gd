@@ -4,6 +4,7 @@ enum TAB {
 	AUDIO,
 	CONTROLS,
 	SCREEN_SETTINGS,
+	DIFFICULTY
 }
 
 var current_setting = TAB.AUDIO setget set_current_setting
@@ -12,6 +13,7 @@ onready var audio : Button = $V/Audio
 onready var controls : Button = $V/Controls
 onready var screen_settings : Button = $V/ScreenSettings
 onready var settings : TabContainer = $V2/Settings
+onready var difficulty : Button = $V/Difficulty
 
 
 # Sets the audio tab to active
@@ -28,8 +30,11 @@ func _on_Controls_toggled(button_pressed: bool) -> void:
 func _on_ScreenSettings_toggled(button_pressed: bool) -> void:
 	if button_pressed:
 		set_current_setting(TAB.SCREEN_SETTINGS)
-	elif current_setting == TAB.SCREEN_SETTINGS:
-		screen_settings.pressed = true
+
+
+func _on_Difficulty_toggled(button_pressed: bool) -> void:
+	if button_pressed:
+		set_current_setting(TAB.DIFFICULTY)
 
 
 # Sets the active tab
@@ -56,4 +61,9 @@ func set_current_setting(val: int) -> void:
 					continue
 				screen_settings.pressed = false
 				screen_settings.disabled = false
-	
+			TAB.DIFFICULTY:
+				if TAB[i] == val:
+					difficulty.disabled = true
+					continue
+				difficulty.pressed = false
+				difficulty.disabled = false

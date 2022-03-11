@@ -1,9 +1,9 @@
 extends Control
 
+var credits_showing := false
+
 onready var t := $Tween
 onready var credits := $Credits
-
-var credits_showing := false
 
 
 func _on_Settings_pressed() -> void:

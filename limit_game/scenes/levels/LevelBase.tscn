@@ -21,9 +21,9 @@ environment = SubResource( 1 )
 [node name="DirtToGrassTiles" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -24, -4 )
 
 [node name="RightBottomBound" type="Position2D" parent="."]
-position = Vector2( 306, 186 )
 
 [node name="DeathWaitTimer" type="Timer" parent="."]
 one_shot = true

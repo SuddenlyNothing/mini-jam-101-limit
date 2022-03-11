@@ -2,6 +2,8 @@ extends TileMap
 
 const GrassParticles := preload("res://scenes/environment/GrassParticles.tscn")
 
+export(bool) var do_spreading := true
+
 onready var grass_tiles := $GrassTiles
 onready var grow_sfx := $GrowSFX
 
@@ -24,15 +26,38 @@ func set_tile_to_grass(pos: Vector2) -> void:
 	grass_particles.emitting = true
 	add_child(grass_particles)
 	
+	if not do_spreading:
+		return
+	
 	if randf() < 0.9:
-		yield(get_tree().create_timer(0.1, false), "timeout")
-		set_tile_to_grass(tile_center + Vector2(0, -cell_size.x))
+		var timer = Timer.new()
+		timer.connect("timeout", self, "set_tile_to_grass",
+				[tile_center + Vector2(0, -cell_size.x)])
+		timer.connect("timeout", timer, "queue_free")
+		timer.one_shot = true
+		add_child(timer)
+		timer.start(0.1)
 	if randf() < 0.5:
-		yield(get_tree().create_timer(0.1, false), "timeout")
-		set_tile_to_grass(tile_center + Vector2(0, cell_size.x))
+		var timer = Timer.new()
+		timer.connect("timeout", self, "set_tile_to_grass",
+				[tile_center + Vector2(0, cell_size.x)])
+		timer.connect("timeout", timer, "queue_free")
+		timer.one_shot = true
+		add_child(timer)
+		timer.start(0.1)
 	if randf() < 0.4:
-		yield(get_tree().create_timer(0.1, false), "timeout")
-		set_tile_to_grass(tile_center + Vector2(cell_size.x, 0))
+		var timer = Timer.new()
+		timer.connect("timeout", self, "set_tile_to_grass",
+				[tile_center + Vector2(cell_size.x, 0)])
+		timer.connect("timeout", timer, "queue_free")
+		timer.one_shot = true
+		add_child(timer)
+		timer.start(0.1)
 	if randf() < 0.4:
-		yield(get_tree().create_timer(0.1, false), "timeout")
-		set_tile_to_grass(tile_center + Vector2(-cell_size.x, 0))
+		var timer = Timer.new()
+		timer.connect("timeout", self, "set_tile_to_grass",
+				[tile_center + Vector2(-cell_size.x, 0)])
+		timer.connect("timeout", timer, "queue_free")
+		timer.one_shot = true
+		add_child(timer)
+		timer.start(0.1)

@@ -26,6 +26,7 @@ bus = "Music"
 [node name="mus_base" type="AudioStreamPlayer" parent="."]
 pause_mode = 1
 stream = ExtResource( 3 )
+autoplay = true
 bus = "Music"
 
 [node name="mus_combat" type="AudioStreamPlayer" parent="."]

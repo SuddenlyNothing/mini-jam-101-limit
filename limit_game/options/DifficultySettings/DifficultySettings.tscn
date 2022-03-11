@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://utils/ButtonSFX.gd" type="Script" id=1]
+[ext_resource path="res://options/DifficultySettings/DifficultySettings.gd" type="Script" id=2]
+
+[node name="DifficultySettings" type="VBoxContainer" groups=["save"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 30
+script = ExtResource( 2 )
+
+[node name="ResetDifficulty" type="Button" parent="."]
+margin_left = 915.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 8
+text = "Reset Difficulty"
+script = ExtResource( 1 )
+
+[node name="H" type="HBoxContainer" parent="."]
+margin_top = 50.0
+margin_right = 1024.0
+margin_bottom = 70.0
+mouse_filter = 2
+custom_constants/separation = 20
+
+[node name="Easy" type="Button" parent="H"]
+margin_right = 328.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Easy"
+script = ExtResource( 1 )
+
+[node name="Medium" type="Button" parent="H"]
+margin_left = 348.0
+margin_right = 676.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Medium"
+script = ExtResource( 1 )
+
+[node name="Hard" type="Button" parent="H"]
+margin_left = 696.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Hard"
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 100.0
+margin_right = 1024.0
+margin_bottom = 131.0
+text = "Changes the damage taken from enemies.
+On easy difficulty, spikes and enemies do no damage"
+autowrap = true
+
+[connection signal="pressed" from="ResetDifficulty" to="." method="_on_ResetDifficulty_pressed"]
+[connection signal="pressed" from="H/Easy" to="." method="set_difficulty" binds= [ 0 ]]
+[connection signal="pressed" from="H/Medium" to="." method="set_difficulty" binds= [ 1 ]]
+[connection signal="pressed" from="H/Hard" to="." method="set_difficulty" binds= [ 2 ]]

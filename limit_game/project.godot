@@ -50,9 +50,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Limit Game"
+config/name="Lush Rush"
 run/main_scene="res://ui/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/lush_rush_icon.png"
 
 [autoload]
 

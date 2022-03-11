@@ -84,6 +84,11 @@ func _process(delta: float) -> void:
 func hit(damage: float) -> void:
 	if is_dead:
 		return
+	match Variables.difficulty:
+		Variables.EASY:
+			damage -= 10
+		Variables.MEDIUM:
+			damage -= 7
 	if hud.add_health(-damage):
 		is_dead = true
 		player_states.call_deferred("set_state", "death")
@@ -174,7 +179,8 @@ func apply_velocity(delta: float, is_on_ground: bool) -> void:
 			var tile_pos = collision.position - collision.normal * 10
 			collision.collider.set_tile_to_grass(tile_pos)
 		elif collision.collider.is_in_group("deadly"):
-			hit(100)
+			if not Variables.difficulty == Variables.EASY:
+				hit(200)
 
 
 func apply_gravity(delta: float, is_falling: bool) -> void:

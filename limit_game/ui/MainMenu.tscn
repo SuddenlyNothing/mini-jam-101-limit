@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/ui/themes/Settings.tres" type="Theme" id=1]
 [ext_resource path="res://utils/ButtonSFX.gd" type="Script" id=2]
@@ -10,29 +10,156 @@
 [ext_resource path="res://scenes/environment/DirtTiles.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/environment/SpikeTiles.tscn" type="PackedScene" id=9]
 
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 72, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 72, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 72, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 96, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 96, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 96, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 6 )
+region = Rect2( 72, 96, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 6 )
+region = Rect2( 72, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 6 )
+region = Rect2( 120, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=77]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 120, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 6 )
+region = Rect2( 72, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 6 )
+region = Rect2( 120, 48, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 6 )
+region = Rect2( 72, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 6 )
+region = Rect2( 120, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 6 )
+region = Rect2( 168, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=73]
+animations = [ {
+"frames": [ SubResource( 58 ), SubResource( 59 ), SubResource( 60 ) ],
+"loop": false,
+"name": "jump",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 49 ) ],
+"loop": false,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 77 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+} ]
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
-
-[node name="Node2D" type="Node2D" parent="."]
-scale = Vector2( 2, 2 )
-
-[node name="SpikeTiles" parent="Node2D" instance=ExtResource( 9 )]
-tile_data = PoolIntArray( -65535, 0, 196609, -65534, 0, 5, -65533, 0, 10, -65532, 0, 10, -65531, 0, 10, -65530, 0, 10, -65529, 0, 10, -65528, 0, 11, 2, 0, 196616, 3, 0, 131077, 4, 0, 131081, 5, 0, 131081, 6, 0, 131081, 7, 0, 131078, 8, 0, 196619, 65539, 0, 196616, 65540, 0, 131077, 65541, 0, 131081, 65542, 0, 131078, 65543, 0, 196619, 131076, 0, 196616, 131077, 0, 196617, 131078, 0, 196619 )
-
-[node name="DirtTiles" parent="Node2D" instance=ExtResource( 8 )]
-tile_data = PoolIntArray( 131082, 0, 8, 131083, 0, 11, 196617, 0, 8, 196618, 0, 65541, 196619, 0, 131083, 262151, 0, 8, 262152, 0, 10, 262153, 0, 65541, 262154, 0, 131081, 262155, 0, 131083, 327686, 0, 8, 327687, 0, 65541, 327688, 0, 131081, 327689, 0, 131081, 327690, 0, 131081, 327691, 0, 131083, 393219, 0, 196609, 393220, 0, 196610, 393221, 0, 196610, 393222, 0, 196613, 393223, 0, 196617, 393224, 0, 196617, 393225, 0, 196617, 393226, 0, 196617, 393227, 0, 196619 )
-
-[node name="GrassTiles" parent="Node2D" instance=ExtResource( 7 )]
-tile_data = PoolIntArray( 262143, 0, 8, 196608, 0, 10, 196609, 0, 6, 196610, 0, 196611, 327679, 0, 65544, 262144, 0, 131081, 262145, 0, 131083, 393215, 0, 65544, 327680, 0, 131078, 327681, 0, 196619, 458751, 0, 196616, 393216, 0, 196619 )
-
-[node name="Player-Sheet" type="Sprite" parent="Node2D"]
-position = Vector2( 50.5, 143 )
-texture = ExtResource( 6 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 24, 24 )
 
 [node name="EnvironmentParallax" parent="." instance=ExtResource( 5 )]
 
@@ -64,7 +191,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 script = ExtResource( 4 )
-next_scene = "res://scenes/levels/Level1.tscn"
+next_scene = "res://ui/LevelSelect.tscn"
 
 [node name="Settings" type="Button" parent="V/V"]
 margin_left = 451.0
@@ -85,6 +212,25 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Credits"
 script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="V"]
+scale = Vector2( 2, 2 )
+
+[node name="SpikeTiles" parent="V/Node2D" instance=ExtResource( 9 )]
+tile_data = PoolIntArray( -65535, 0, 196609, -65534, 0, 5, -65533, 0, 10, -65532, 0, 10, -65531, 0, 10, -65530, 0, 10, -65529, 0, 10, -65528, 0, 11, 2, 0, 196616, 3, 0, 131077, 4, 0, 131081, 5, 0, 131081, 6, 0, 131081, 7, 0, 131078, 8, 0, 196619, 65539, 0, 196616, 65540, 0, 131077, 65541, 0, 131081, 65542, 0, 131078, 65543, 0, 196619, 131076, 0, 196616, 131077, 0, 196617, 131078, 0, 196619 )
+
+[node name="DirtTiles" parent="V/Node2D" instance=ExtResource( 8 )]
+tile_data = PoolIntArray( 131082, 0, 8, 131083, 0, 11, 196617, 0, 8, 196618, 0, 65541, 196619, 0, 131083, 262151, 0, 8, 262152, 0, 10, 262153, 0, 65541, 262154, 0, 131081, 262155, 0, 131083, 327686, 0, 8, 327687, 0, 65541, 327688, 0, 131081, 327689, 0, 131081, 327690, 0, 131081, 327691, 0, 131083, 393219, 0, 196609, 393220, 0, 196610, 393221, 0, 196610, 393222, 0, 196613, 393223, 0, 196617, 393224, 0, 196617, 393225, 0, 196617, 393226, 0, 196617, 393227, 0, 196619 )
+
+[node name="GrassTiles" parent="V/Node2D" instance=ExtResource( 7 )]
+tile_data = PoolIntArray( 262143, 0, 8, 196608, 0, 10, 196609, 0, 6, 196610, 0, 196611, 327679, 0, 65544, 262144, 0, 131081, 262145, 0, 131083, 393215, 0, 65544, 327680, 0, 131078, 327681, 0, 196619, 458751, 0, 196616, 393216, 0, 196619 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="V/Node2D"]
+position = Vector2( 50.5, 142.5 )
+frames = SubResource( 73 )
+animation = "idle"
+frame = 1
+playing = true
 
 [node name="Tween" type="Tween" parent="."]
 
